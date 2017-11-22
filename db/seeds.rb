@@ -18,6 +18,64 @@
 #   )
 # end
 
+30.times do
+  User.create(
+    email: Faker::Internet.email,
+    password: "123123",
+    password_confirmation: "123123"
+  )
+end
+
+
+User.create(
+  {
+    email: "admin@asdf.com",
+    password: "123123",
+    password_confirmation: "123123",
+    role: "admin"
+  }
+)
+
+#
+#   {
+#     email: "a@asdf.com",
+#     password: "123123",
+#     password_confirmation: "123123",
+#     role: "regular"
+#   },
+#   {
+#     email: "b@asdf.com",
+#     password: "123123",
+#     password_confirmation: "123123",
+#     role: "regular"
+#   },
+#   {
+#     email: "c@asdf.com",
+#     password: "123123",
+#     password_confirmation: "123123",
+#     role: "regular"
+#   },
+#   {
+#     email: "d@asdf.com",
+#     password: "123123",
+#     password_confirmation: "123123",
+#     role: "regular"
+#   },
+#   {
+#     email: "e@asdf.com",
+#     password: "123123",
+#     password_confirmation: "123123",
+#     role: "regular"
+#   }
+# ])
+
+# User.create(
+#   email: "admin@asdf.com",
+#   password: "123123",
+#   password_confirmation: "123123",
+#   role: "admin"
+# )
+
 
 # 사진이 나오도록 ..
 require 'csv'

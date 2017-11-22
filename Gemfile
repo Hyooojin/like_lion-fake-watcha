@@ -1,11 +1,13 @@
 source 'https://rubygems.org'
 
+gem 'faker'
 gem 'devise-i18n'
 gem 'carrierwave', '~> 1.0'
 gem 'devise'
 gem 'rest-client'
 gem 'httparty'
-
+gem 'pundit'
+gem 'cancancan'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'

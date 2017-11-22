@@ -2,9 +2,16 @@ Rails.application.routes.draw do
   devise_for :users
   get '/movies/:id/reviews' => 'reviews#create'
   root 'movies#index'
-
   resources :movies
 
+  # put '/admin/users/:id' => 'admin::users#upgarde'
+  #restful하지 않은 method가 필요할 때
+  namespace :admin do
+    resources :users do
+      put :upgrade, on: :member # user_id가 아니라 id로 쓰고 싶을 때 
+      put :downgrade, on: :member
+    end
+  end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>왓챠 : 영화평점서비스</title>
+  <title>왓챠 : 관리자 페이지</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
@@ -11,8 +11,17 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
 </head>
 <body>
+<%= render 'layouts/admin_header' %>
+<% if user_signed_in? %>
+<%= current_user.email%>님 환영합니다.
+<% end %>
 
-<%= render 'layouts/header' %>
+<div class="container-fluid">
+  <div class="row">
+  <%= render 'layouts/admin_menu'%>
+  <%= yield %>
+  </div>
+</div>
 
 
 <!-- <%=link_to 'home', root_path%>
@@ -24,10 +33,7 @@
   <%=link_to 'sign up', new_user_registration_path%>
 <% end %> -->
 
-<p class="notice"><%= notice %></p>
-<p class="alert"><%= alert %></p>
-<%= yield %>
-<%= render 'layouts/footer'%>
-
+<!-- <p class="notice"><%= notice %></p>
+<p class="alert"><%= alert %></p> -->
 </body>
 </html>

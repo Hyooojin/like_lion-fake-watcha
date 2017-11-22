@@ -1,15 +1,18 @@
 class MoviesController < ApplicationController
   before_action :set_movie, only: [:show, :edit, :update, :destroy]
-
+  # before_action :check_admin, only: [:check, :edit, :destroy]
+  load_and_authorize_resource
   # GET /movies
   # GET /movies.json
   def index
     @movies = Movie.all
+    # authorize! :read, Movie
   end
 
   # GET /movies/1
   # GET /movies/1.json
   def show
+
     # total = 0
     # @movie.review.each do |review|
     #   total +=
@@ -30,20 +33,24 @@ class MoviesController < ApplicationController
     #   @num += 1
     #   @avg = @sum / @num
     # end
+    # authorize! :read, Movie
   end
 
   # GET /movies/new
   def new
     @movie = Movie.new
+    # authorize! :create, Movie
   end
 
   # GET /movies/1/edit
   def edit
+    # authorize! :update, Movie
   end
 
   # POST /movies
   # POST /movies.json
   def create
+
     @movie = Movie.new(movie_params)
 
     respond_to do |format|
@@ -55,11 +62,13 @@ class MoviesController < ApplicationController
         format.json { render json: @movie.errors, status: :unprocessable_entity }
       end
     end
+    # authorize! :create, Movie
   end
 
   # PATCH/PUT /movies/1
   # PATCH/PUT /movies/1.json
   def update
+
     respond_to do |format|
       if @movie.update(movie_params)
         format.html { redirect_to @movie, notice: 'Movie was successfully updated.' }
@@ -69,6 +78,7 @@ class MoviesController < ApplicationController
         format.json { render json: @movie.errors, status: :unprocessable_entity }
       end
     end
+    # authorize! :update, Movie
   end
 
   # DELETE /movies/1
@@ -79,6 +89,7 @@ class MoviesController < ApplicationController
       format.html { redirect_to movies_url, notice: 'Movie was successfully destroyed.' }
       format.json { head :no_content }
     end
+    # authorize! :destroy, Movie
   end
 
   private
@@ -91,4 +102,10 @@ class MoviesController < ApplicationController
     def movie_params
       params.require(:movie).permit(:title, :desc, :image_url)
     end
+
+    def check_admin
+      current_user.admin?
+    end
+
+
 end

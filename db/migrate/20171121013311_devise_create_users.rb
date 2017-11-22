@@ -2,7 +2,7 @@ class DeviseCreateUsers < ActiveRecord::Migration
   def change
     create_table :users do |t|
       ## Database authenticatable
-      t.string :email,              null: false, default: ""
+      t.string :email,              null: false, default: "" # null이면 안된다. ""은 nil값을 넣지 않는다. 
       t.string :encrypted_password, null: false, default: ""
 
       ## Recoverable
