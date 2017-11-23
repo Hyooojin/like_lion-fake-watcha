@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+gem 'trix'
 gem 'aws-sdk-rails'
 gem 'fog-aws'
 gem 'mini_magick'
