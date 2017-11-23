@@ -1,5 +1,8 @@
 source 'https://rubygems.org'
 
+gem 'aws-sdk-rails'
+gem 'fog-aws'
+gem 'mini_magick'
 gem 'faker'
 gem 'devise-i18n'
 gem 'carrierwave', '~> 1.0'
